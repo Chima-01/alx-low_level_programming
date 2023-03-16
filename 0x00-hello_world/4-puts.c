@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
-/*
- * Using puts() function to print a string
+/**
+ * Description: main - prints out a string to stdout
+ * Return: 0 if success
  */
 
 int main(void)
 {
-	/* declaring a variable and giving a value */
+	/* using puts() function */
 
-	char programme[] = "Programming is like building a multilingual puzzle";
-
-	puts(programme);
+	puts("\"Programming is like building a multilingual puzzle");
 	return (0);
 }
