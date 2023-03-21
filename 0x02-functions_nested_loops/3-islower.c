@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <ctype.h>
 #include "main.h"
 
 /**
@@ -10,13 +10,12 @@
 
 int _islower(int c)
 {
-	if (c  >= 'a' && c <= 'z')
+	if (islower(c))
 	{
-		c = 1;
+		return (1);
 	}
-	else if (c >= 'A' && c <= 'Z')
+	else
 	{
-		c = 0;
+		return (0);
 	}
-		return (c);
 }
