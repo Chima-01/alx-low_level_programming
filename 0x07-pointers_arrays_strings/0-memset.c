@@ -3,10 +3,10 @@
 /**
  * _memset - This function replaces the content of a given buffer
  * with a given argument
- * Replacing is restricted to the n-byte given
- * @s: The argument buffer
- * @b: argument to substitute a given buffer content with
- * @n: the limitation to the replacement that can be done
+ * substitution is restricted to the n num given
+ * @s: The parameter pointing to buffer
+ * @b: parameter to substitute a given buffer content with
+ * @n: the limitation to the substitution that can be done
  * Return: pointer (success)
  */
 
