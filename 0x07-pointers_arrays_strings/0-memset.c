@@ -18,11 +18,6 @@ char *_memset(char *s, char b, unsigned int n)
 
 	c = &b;
 
-	if (s == NULL || b == ' ' || n == 0)
-	{
-		return (s);
-	}
-
 	for (i = 0; i < n; i++)
 	{
 		s[i] = *c;
