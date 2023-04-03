@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _memset - This function replaces the content of a given buffer
@@ -13,20 +12,14 @@
 
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int j = 0, i;
+	unsigned int i;
 	char *c;
 
 	c = &b;
-	while (s[j] == '\0')
-	{
-		j++;
-	}
-		j = 0;
+
 	for (i = 0; i < n; i++)
 	{
-		s[j] = *c;
-		j++;
+		s[i] = *c;
 	}
-		s[i] = '\0';
 		return (s);
 }
