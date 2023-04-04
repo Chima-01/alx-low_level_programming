@@ -21,8 +21,8 @@ char *_strchr(char *s, char c)
 	}
 		i++;
 	}
-	if (c == ' ')
+	if (c == '\0')
 		return (s);
-	else 
+	else
 		return ('\0');
 }
