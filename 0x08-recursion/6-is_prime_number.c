@@ -21,6 +21,14 @@ int is_prime_number(int n)
 	}
 }
 
+/**
+ * prime_number - This function is called by is_prime_number
+ * then it's called recursively till a base condition is met
+ * @n: number given
+ * @c: number to increment
+ * Return: 1 (success);
+ */
+
 int prime_number(int n, int c)
 {
 	if (n % c == 0)
