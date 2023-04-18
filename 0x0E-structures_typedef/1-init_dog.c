@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "dog.h"
 
 
@@ -8,15 +7,12 @@
  * @d: a pointer to the memory address of dog initialised
  * @name: name of dog
  * @age: age of dog
- * @owner: =owner of the dog name
+ * @owner: owner of the dog
  */
 
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	struct dog *dog = d;
-
-	dog = malloc(sizeof(struct dog));
-	if (dog != NULL)
+	if (d != NULL)
 	{
 	d->name = name;
 	d->age = age;
