@@ -1,0 +1,52 @@
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
+#include "variadic_functions.h"
+
+/**
+ * print_all - This function prints data types specified in c
+ * @format: format of data typed to be printed
+ * char integer float str
+ */
+
+void print_all(const char * const format, ...)
+{
+	va_list list;
+	char *str, *sym = "cifs";
+int i = 0, j, len = strlen(format), len1 = strlen(sym);
+
+	va_start(list, format);
+	while (i < len)
+	{
+	switch (format[i])
+	{
+	case 'c':
+	printf("%c", va_arg(list, int));
+		break;
+	case 'i':
+	printf("%d", va_arg(list, int));
+		break;
+	case 'f':
+	printf("%f", va_arg(list, double));
+		break;
+	case 's':
+	str = va_arg(list, char*);
+	if (str == NULL)
+	{
+		printf("(nil)");
+		break;
+	}
+		printf("%s", str);
+		break;
+	} j = 0;
+	while (j < len1)
+	{
+		if (sym[j] == format[i] && j != len1 - 1)
+		{
+			printf(", ");
+			break;
+		} j++;
+	}	i++;
+	}
+		printf("\n"), va_end(list);
+}
