@@ -16,7 +16,7 @@ void print_all(const char * const format, ...)
 int i = 0, j, len = strlen(format), len1 = strlen(sym);
 
 	va_start(list, format);
-	while (i < len)
+	while (i < len && format)
 	{
 	switch (format[i])
 	{
@@ -33,8 +33,7 @@ int i = 0, j, len = strlen(format), len1 = strlen(sym);
 	str = va_arg(list, char*);
 	if (str == NULL)
 	{
-		printf("(nil)");
-		break;
+		str = "(nil)";
 	}
 		printf("%s", str);
 		break;
