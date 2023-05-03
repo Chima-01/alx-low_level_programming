@@ -17,8 +17,18 @@ int is_palindrome(char *s)
 	}
 	else if (s[0] == s[len - 1])
 	{
-		s[len - 1] = '\0';
-		return (is_palindrome(&s[1]));
+		int result;
+		char *str = malloc(len);
+
+		if (str == NULL)
+		{
+			return (0);
+		}
+		strcpy(str, &s[1]);
+		str[len - 2] = '\0';
+		result = is_palindrome(str);
+		free(str);
+		return (result);
 	}
 	else
 		return (0);
