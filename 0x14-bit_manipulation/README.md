@@ -7,7 +7,7 @@ Bitwise operators are characters that represent actions (bitwise operations) to 
 | Operators	| Opearion Name |
 | :---		|   :----:	|
 |  &		|Bitwise AND    |
-| |		| Bitwise OR    |
+| \|		| Bitwise OR    |
 | ^		| Bitwise XOR   |
 | ~		|Bitwise complement
 |  <<		|  Shift left   |

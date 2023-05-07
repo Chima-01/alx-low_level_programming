@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -10,8 +11,8 @@
 
 int print_last_digit(int num)
 {
-	int n;
+		_putchar('0' + (num % 10));
+		return (num);
 
-	n = num % 10;
-	return (n);
+		_putchar('\n');
 }
