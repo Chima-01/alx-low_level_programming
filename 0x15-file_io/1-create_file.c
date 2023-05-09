@@ -10,6 +10,7 @@
 int create_file(const char *filename, char *text_content)
 {
 	int fd, len;
+	char *ptr;
 	ssize_t i;
 
 	if (!filename)
@@ -25,6 +26,12 @@ int create_file(const char *filename, char *text_content)
 	if (text_content != NULL)
 	{
 	len = strlen(text_content);
+	ptr = malloc(sizeof(char) * len);
+	if (!ptr)
+	{
+		close(fd);
+		return (-1);
+	}
 	i = write(fd, text_content, len);
 	if (!i)
 	{
@@ -39,5 +46,6 @@ int create_file(const char *filename, char *text_content)
 	}
 
 	close(fd);
+	free(ptr);
 	return (1);
 }
