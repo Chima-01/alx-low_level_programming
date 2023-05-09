@@ -31,7 +31,7 @@ int create_file(const char *filename, char *text_content)
 	len = strlen(text_content);
 
 	i = write(fd, text_content, len);
-	if (!i)
+	if (i == -1)
 	{
 		close(fd);
 		return (-1);
