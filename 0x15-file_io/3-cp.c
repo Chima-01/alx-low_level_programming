@@ -44,7 +44,6 @@ int filecpy(const char *file_from, const char *file_to)
 
 /**
  * _filecpyto - function to copy file
- * @fd: file descriptor
  * @buff: buffer
  * @file_cpy: file to copy content of buff to;
  * Return: 1 (success)
