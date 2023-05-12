@@ -9,35 +9,37 @@
 
 int filecpy(const char *file_from, const char *file_to)
 {
-	int fd;
+	int fd, fc;
 	ssize_t r;
-	char *buffer;
+	char buffer[1024];
 
 	if (!file_from)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 
 	fd = open(file_from, O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
-
-	buffer = malloc(sizeof(char) * 1024);
-	if (!buffer)
-		exit(98);
 
 	r = read(fd, buffer, 1024);
 	if (r == -1)
 	{
-	dprintf(2, "Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 
-	return (_filecpyto(fd, &buffer, file_to));
+	fc = close(fd);
+	if (fc == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+		return (_filecpyto(buffer, file_to));
 }
 
 /**
@@ -48,37 +50,29 @@ int filecpy(const char *file_from, const char *file_to)
  * Return: 1 (success)
  */
 
-int _filecpyto(int fd, char **buff, const char *file_cpy)
+int _filecpyto(char *buff, const char *file_cpy)
 {
-	int fd1, fc, fc1;
+	int fd1, fc1;
 	ssize_t w;
 
 	fd1 = open(file_cpy, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	if (fd1 == -1)
 	{
-		dprintf(2, "Error: Can't write to %s\n", file_cpy);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_cpy);
 		exit(99);
 	}
 
-	w = write(fd1, *buff, 1024);
+	w = write(fd1, buff, 1024);
 	if (w == -1)
 	{
-		dprintf(2, "Error: Can't write to %s\n", file_cpy);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_cpy);
 		exit(99);
-	}
-
-	fc = close(fd);
-
-	if (fc == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", fd);
-		exit(100);
 	}
 		fc1 = close(fd1);
 		if (fc1 == -1)
 		{
-			dprintf(2, "Error: Can't close fd %d\n", fd1);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
 			exit(100);
 		}
 			return (1);
