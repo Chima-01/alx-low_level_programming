@@ -13,7 +13,7 @@ int set_bit(unsigned long int *n, unsigned int index)
 	size_t limit = sizeof(unsigned long int) * 8;
 	unsigned long int bit;
 
-	if (index > limit)
+	if (index > limit - 1)
 		return (-1);
 
 	bit = 1 << index;
