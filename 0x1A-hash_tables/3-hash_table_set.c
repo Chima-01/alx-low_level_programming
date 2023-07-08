@@ -51,8 +51,6 @@ hash_node_t *create_node(hash_node_t *head, const char *key, const char *value)
 		return (NULL);
 	if (new_node->key == NULL || new_node->value == NULL)
 	{
-		free(new_node->key);
-		free(new_node->value);
 		free(new_node);
 		return (NULL);
 	}
