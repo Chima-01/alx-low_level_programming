@@ -10,7 +10,7 @@
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	 hash_node_t *head;
+	 hash_node_t *head, *current;
 	 unsigned long int index;
 
 	if (ht == NULL || key == NULL || value == NULL)
@@ -20,7 +20,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (index >= ht->size)
 		return (0);
-
+	if (ht->array[index] != NULL)
+	{
+		current = ht->array[index];
+		if (strcmp(current->key, key) == 0)
+		{
+			strcpy(ht->array[index]->value, value);
+			return (1);
+		}
+	}
 	head = ht->array[index];
 	head = create_node(head, key, value);
 	if (!head)
@@ -41,7 +49,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 hash_node_t *create_node(hash_node_t *head, const char *key, const char *value)
 {
-	hash_node_t *new_node, *current;
+	hash_node_t *new_node;
 
 	new_node = malloc(sizeof(hash_node_t));
 	new_node->key = malloc(strlen(key) + 1);
@@ -58,20 +66,6 @@ hash_node_t *create_node(hash_node_t *head, const char *key, const char *value)
 	strcpy(new_node->key, key);
 	strcpy(new_node->value, value);
 	new_node->next = NULL;
-
-	current = head;
-	while (current != NULL)
-	{
-		if (strcmp(current->key, key) == 0)
-		{
-			strcpy(current->value, value);
-			free(new_node->key);
-			free(new_node->value);
-			free(new_node);
-			return (head);
-		}
-		current = current->next;
-	}
 
 	if (head == NULL)
 		head = new_node;
