@@ -27,6 +27,14 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if (value == NULL)
 		return (NULL);
 
-	strcpy(value, hash->value);
-	return (value);
+	while (hash != NULL)
+	{
+		if (strcmp(hash->key, key) == 0)
+		{
+		strcpy(value, hash->value);
+		return (value);
+		}
+		hash = hash->next;
+	}
+		return (NULL);
 }
