@@ -1,0 +1,6 @@
+# make file to compile all .c file in a directory
+
+all: school
+
+school:
+	gcc main.c school.c -o school
