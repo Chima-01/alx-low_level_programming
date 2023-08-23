@@ -1,5 +1,3 @@
-# make file to compile all .c file in a directory
-
 all: school
 
 school:
