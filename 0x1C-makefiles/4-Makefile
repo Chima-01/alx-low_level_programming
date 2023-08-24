@@ -14,7 +14,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	$(RM) ~*  $(NAME)
+	$(RM) ~* *.swp $(NAME)
 
 oclean:
 	$(RM) $(OBJ)
