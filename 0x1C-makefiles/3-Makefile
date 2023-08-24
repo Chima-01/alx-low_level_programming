@@ -9,10 +9,7 @@ RM=rm -f
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $^ -o $@
-
-%.o:%.c
-	$(CC) -c -o $@ $<
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
 	$(RM) ~* *.swp $(NAME)
